@@ -1,2 +1,2 @@
 # DataStructures
-Me practising data structures in C++
+practicing data structures in C++
