@@ -9,16 +9,34 @@ struct Node {
 	struct Node* next;
 };
 
+void printLinkedList(Node* listNode) {
+
+	// pointer on the first node
+	struct Node* p = listNode;
+
+	while (p != 0) {
+		cout << p->data << endl;
+		p = p->next;
+	}
+}
+
 int main()
 {
 	// Link list
-	struct Node* startNode;
-	startNode = new Node;
+	struct Node* firstNode = new Node;
+	struct Node* secondNode = new Node;
+	struct Node* thirdNode = new Node;
 
 	// Assign values
-	startNode->data = 100;
-	startNode->next = 0;
+	firstNode->data = 100;
+	firstNode->next = secondNode;
+	secondNode->data = 250;
+	secondNode->next = thirdNode;
+	thirdNode->data = 300;
+	thirdNode->next = 0;
 
-
-	cout << "value of start node data is " << startNode->data << endl;
+	// Print the nodes in the list
+	printLinkedList(firstNode);
 }
+
+
