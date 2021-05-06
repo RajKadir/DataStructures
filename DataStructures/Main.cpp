@@ -9,7 +9,7 @@ struct Node {
 	struct Node* next;
 };
 
-void printLinkedListIterative(Node* head) {
+void printLinkedList(Node* head) {
 	struct Node* p = head;
 	while (p != 0) {
 		cout << p->data << endl;
@@ -17,10 +17,10 @@ void printLinkedListIterative(Node* head) {
 	}
 }
 
-void printLinkedListRecursive(Node* head) {
+void printLinkedListRec(Node* head) {
 	if (head != NULL) {
 		cout << head->data << endl;
-		printLinkedListRecursive(head->next);
+		printLinkedListRec(head->next);
 	}
 }
 
@@ -33,6 +33,31 @@ int lengthOfNodes(Node* head) {
 	}
 	return sum;
 }
+
+int lengthOfNodesRec(Node* head) {
+	if (head == NULL) 
+		return 0;
+	else
+		return lengthOfNodesRec(head->next) + 1;
+}
+
+int sumOfAllNodes(Node* head) {
+	int sum = 0;
+	while (head != NULL) {
+		sum += head->data;
+		head = head->next;
+	}
+	return sum;
+}
+
+int sumOfAllNodesRec(Node* head) {
+	if (head == NULL)
+		return 0;
+	else
+		return sumOfAllNodes(head->next) + head->data;
+}
+
+
 
 int main()
 {
@@ -49,7 +74,10 @@ int main()
 	thirdNode->data = 300;
 	thirdNode->next = 0;
 
-	cout << lengthOfNodes(firstNode);
+	cout << "Number of nodes: " << lengthOfNodesRec(firstNode) << endl; 
+	cout << "Sum of nodes: " << sumOfAllNodes(firstNode) << endl;
+	cout << "Recursive: Sum of nodes: " << sumOfAllNodes(firstNode) << endl;
+	
 }
 
 
