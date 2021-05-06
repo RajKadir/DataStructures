@@ -9,14 +9,19 @@ struct Node {
 	struct Node* next;
 };
 
-void printLinkedList(Node* listNode) {
-
-	// pointer on the first node
-	struct Node* p = listNode;
-
+void printLinkedListIterative(Node* head) {
+	struct Node* p = head;
 	while (p != 0) {
 		cout << p->data << endl;
 		p = p->next;
+	}
+}
+
+void printLinkedListRecursive(Node* head) {
+
+	if (head != NULL) {
+		cout << head->data << endl;
+		printLinkedListRecursive(head->next);
 	}
 }
 
@@ -36,7 +41,8 @@ int main()
 	thirdNode->next = 0;
 
 	// Print the nodes in the list
-	printLinkedList(firstNode);
+	//printLinkedListIterative(firstNode);
+	printLinkedListRecursive(firstNode);
 }
 
 
