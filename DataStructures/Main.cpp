@@ -18,11 +18,20 @@ void printLinkedListIterative(Node* head) {
 }
 
 void printLinkedListRecursive(Node* head) {
-
 	if (head != NULL) {
 		cout << head->data << endl;
 		printLinkedListRecursive(head->next);
 	}
+}
+
+int lengthOfNodes(Node* head) {
+	int sum = 0;
+	struct Node* p = head;
+	while (p != 0) {
+		sum++;
+		p = p->next;
+	}
+	return sum;
 }
 
 int main()
@@ -40,9 +49,7 @@ int main()
 	thirdNode->data = 300;
 	thirdNode->next = 0;
 
-	// Print the nodes in the list
-	//printLinkedListIterative(firstNode);
-	printLinkedListRecursive(firstNode);
+	cout << lengthOfNodes(firstNode);
 }
 
 
