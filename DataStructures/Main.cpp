@@ -57,6 +57,54 @@ int sumOfAllNodesRec(Node* head) {
 		return sumOfAllNodes(head->next) + head->data;
 }
 
+int findMax(Node* head) {
+	int max = INT_MIN;
+
+	while (head->next) {
+		if (head->data > max) {
+			max = head->data;
+		}
+		head = head->next;
+	}
+
+	return max;
+}
+int findMaxRec(Node* head) {
+	int max = INT_MIN;
+	if (head == NULL)
+		return INT_MIN;
+
+	max = findMaxRec(head->next);
+
+	return head->data > max ? head->data : max;
+}
+
+
+int findSmall(Node* head) {
+	int small = INT_MAX;
+	while (head != NULL) {
+
+		if (head->data < small) {
+			small = head->data;
+		}
+
+		head = head->next;
+	}
+	return small;
+}
+
+int findSmallRec(Node* head) {
+	int small = INT_MAX;
+	if (head == NULL) {
+		return INT_MAX;
+	}
+
+	small = findSmallRec(head->next);
+
+
+	return head->data < small ? head->data : small;
+}
+
 
 
 int main()
@@ -77,7 +125,10 @@ int main()
 	cout << "Number of nodes: " << lengthOfNodesRec(firstNode) << endl; 
 	cout << "Sum of nodes: " << sumOfAllNodes(firstNode) << endl;
 	cout << "Recursive: Sum of nodes: " << sumOfAllNodes(firstNode) << endl;
-	
+
+	cout << "Maximum number in the nodes is: " << findMax(firstNode) << endl;
+	cout << "Recursive: Maximum number in the nodes is: " << findMaxRec(firstNode) << endl;
+	cout << "Recursive: Smallest int in list:" << findSmallRec(firstNode) << endl;
 }
 
 
